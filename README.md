@@ -1,33 +1,37 @@
 # Interface Layout
 
-Arrange RuneLite around the way you play. Move menu bars, detach tabs into rows or columns, position orbs and the compass, and choose which controls stay visible. Scale overlay menu buttons while keeping your resource-pack icons.
+> This guide describes [Plugin Hub PR #20665](https://github.com/runelite/plugin-hub/pull/20665). Features from that update may not be in your installed Hub version yet.
 
-**Pending Hub update:** moving and anchoring the visible native minimap in Free Position is included in [the submitted update](https://github.com/runelite/plugin-hub/pull/20479).
+Arrange RuneLite around the way you play. Move menu bars, detach tabs into rows or columns, position orbs and the compass, and choose which controls stay visible. Scale overlay menu buttons while keeping your resource-pack icons.
 
 ## What you can do
 
+- **Create anchor layouts:** group compatible controls, overlays and infoboxes in Free, Row, Column or Wrap containers, with import, drag-to-attach, locking and Undo.
 - **Build menu layouts:** keep native rows, start with vertical bars, or create custom groups and detached buttons.
 - **Scale overlay buttons:** adjust all menu buttons together from **25–200%**.
 - **Keep your artwork:** **Resource pack** is the default icon source, including custom spellbooks. **Faithful contours** is an optional style and a fallback for missing pack replacements.
-- **Position map controls:** move free orbs and the compass in resizable modes; the pending update adds native-minimap movement and anchoring.
-- **Use circular rims:** Silver or Dark grey frames, with optional number-only, icon-only or combined circular-orb contents.
+- **Position map controls:** move and anchor the native minimap, free orbs and compass in resizable modes.
+- **Use circular rims:** Silver or Dark grey frames, or no custom rim, with optional number-only, icon-only or combined circular-orb contents.
+- **Track orb timers:** Optional inner rings for HP regeneration, special energy and prayer drain, including Rapid Heal, Lightbearer and equipment prayer bonus. The outer prayer potion-dose reminder stays separate.
 - **Save each display mode:** Fixed, Resizable Classic and Resizable Modern keep separate menu layouts.
 - **Control visibility:** hide individual tabs, map controls and decorative borders, with shortcuts and resets.
 
 ## Getting started
 
-1. Install **Interface Layout** from RuneLite’s Plugin Hub and open its settings.
-2. Choose a **Menu arrangement** under **Menu bars**, then enable **Edit interface** for grouping guides.
-3. **Alt-drag** moves whole bars or controls. **Shift-drag** detaches or joins a menu stone when custom grouping is enabled.
-4. To scale buttons, enable **Menu bars → Use overlay menu buttons** and set **Resize menu tabs (%)**.
-5. For individually movable map controls, choose **Map and orb visibility → Orb arrangement → Free Position** in a resizable display mode.
-6. Turn **Edit interface** off when finished. Saved positions remain.
+1. Enable **Interface Layout**, then open its minimap icon in RuneLite's side panel. If hidden, enable **Show side panel icon** in the regular plugin settings.
+2. In **Orbs**, choose **Normal**, **Free placement** or **Compact orbs**. Normal restores native positioning without deleting your free layout.
+3. In **Menu Tabs**, choose the arrangement, overlay buttons, artwork and size. Expand **Visible menu tabs** to show or hide individual buttons.
+4. In **Orbs**, expand a control such as **Prayer** to adjust its visibility, mirroring and Beta timer together. Related settings appear when enabled.
+5. In **Anchors**, create containers or import Custom UI Anchors. Enable **Edit anchors**, then hold your RuneLite drag hotkey and drop supported controls into a highlighted anchor. Ctrl-click or Shift-click member names to move or detach a selection together.
+6. **General** contains interface editing, equipment options, borders and resets. Enable **Edit interface** for menu grouping; Alt-drag moves controls, and Shift-drag groups menu tabs. Turn editing off when finished.
+
+Regular plugin settings retain editing, keyboard shortcuts and sidebar visibility. Existing settings and saved layouts are preserved. Screenshots and recordings below show the earlier settings arrangement; use these tab names for the current controls.
 
 ## Resource packs and Faithful contours
 
-**Menu bars → Overlay icon style → Resource pack** follows active Resource Packs and Interface Styles replacements, including your spellbooks. Missing replacements fall back to Faithful contours. Selecting **Faithful contours** uses the bundled artwork instead; active tab backgrounds still follow the current game or pack.
+**Menu Tabs → Icon artwork → Resource pack** follows active Resource Packs and Interface Styles replacements, including your spellbooks. Missing replacements fall back to Faithful contours. Selecting **Faithful contours** uses the bundled artwork instead; active tab backgrounds still follow the current game or pack.
 
-**Keep icons at native size** keeps icons at normal size inside enlarged buttons. Below 100%, they shrink with the buttons. Packs must support the selected display mode. No resource pack is downloaded or redistributed by this plugin.
+**Keep native icon size** keeps icons at normal size inside enlarged buttons. Below 100%, they shrink with the buttons. Packs must support the selected display mode. No resource pack is downloaded or redistributed by this plugin.
 
 Native and overlay menu layouts are saved separately. Turning overlay buttons off restores the saved native layout.
 
@@ -42,19 +46,33 @@ Example from a local TEST build with Resource pack selected. The displayed artwo
 
 ## Free-position native minimap
 
-This section describes the pending minimap update.
-
-In **Classic or Modern resizable**, choose **Free Position** and leave **Hide minimap** off. Alt-drag the native minimap, or place it through **Custom UI Anchors** using the normal overlay placement system.
+In **Classic or Modern resizable**, choose **Orbs → Positioning → Free placement** and leave **Orbs → Minimap & compass → Show minimap** checked. Alt-drag the native minimap, or attach it through the built-in **Anchors** tab. **Custom UI Anchors** remains an optional alternative; give each control one layout owner.
 
 [![Free-position minimap, separate compass and circular orbs with the Dark grey rim](docs/media/free-minimap-compass-orbs.png)](docs/media/free-minimap-and-orb-controls.mp4)
 
 [Watch the 26-second demonstration](docs/media/free-minimap-and-orb-controls.mp4): circular-orb display choices, visibility toggles and native-minimap movement with anchor guides. Recorded in a local TEST build; the documentation copy has no audio.
 
-The native map keeps its content and navigation. Its old surround and compass ring are replaced by the selected **Circular orb rim**. The compass follows the map until moved independently; other orbs keep their own positions. The minimap frame does not require enabling circular-orb number-tab removal.
+The native map keeps its content and navigation. Choose **Orbs → Minimap & compass → Frame** to keep the **Native / resource pack** surround (the default), or use the selected **Shared circular rim**. Choose **None** for the rim to remove the custom border. The native surround moves with the map and retains its combined compass socket. The compass follows the map until moved independently; other orbs keep their own positions. The minimap frame does not require enabling circular-orb number-tab removal.
 
 Hiding and showing the map retains its position. Resetting the element clears its custom position. Resetting the layout or disabling the plugin restores native layout behavior. Fixed mode retains its native constraints, and game-hidden controls remain hidden.
 
-**Show separate minimap** is an existing, different option used while the native map is hidden. That separate map does not include other plugins’ minimap overlays; this limitation is not a reason to replace the visible native map in the new Free Position workflow.
+**Orbs → Legacy separate minimap → Show separate minimap** is a different option available in Compact orbs while the native map is hidden. That separate map does not include other plugins’ minimap overlays; this limitation is not a reason to replace the visible native map in the new Free Position workflow.
+
+## Built-in anchors
+
+The **Anchors** tab stores containers and their members in Interface Layout. Importing Custom UI Anchors previews the transfer and leaves that plugin's settings unchanged. Avoid assigning the same overlay to both systems at once.
+
+Drag-to-attach works with Edit anchors enabled and your configured RuneLite drag hotkey. Free containers retain the drop offset; Row, Column and Wrap containers use member order. Arrangement, Enabled, Locked, spacing, size and appearance changes apply immediately. Text and typed numeric values use their normal Enter/focus-loss commit behavior. Drag an attached member outside the anchors to detach it at the drop position, or select **Detach** to leave it in place. **Undo** restores the previous edit. Hidden members retain their assignments.
+
+With **Edit anchors** enabled, drag ordinary movable overlays or infobox groups straight into an anchor using your RuneLite drag hotkey. No selection under **Other overlays…** is required; that picker also lets you include overlays in the member list when editing is off. Detaching saves their new placement. World/actor overlays, tooltips, manually rendered overlays, ambiguous names and plugins that continually reposition themselves are not guaranteed compatible. Our supported menu groups, free map controls, Chat overlays, customized bank and Looting notifications use dedicated adapters.
+
+### Import an existing Custom UI Anchors layout
+
+1. Open **Anchors** and choose the Custom UI Anchors import action. Review the preview before importing.
+2. Keep one layout owner for each member. Import leaves the original plugin's saved setup intact; disable that plugin when switching to the built-in anchors.
+3. Enable **Edit anchors**, then use your configured RuneLite drag hotkey (Alt by default) to move the imported anchors or drag additional members into them. Drop a member outside the anchors, within the canvas, to detach it.
+
+**Enabled** releases or reclaims an anchor's members. **Locked** keeps them arranged while preventing edits. Ctrl-click or Shift-click names to reorder a selection. Hidden or temporarily covered members keep their assignments. Shared templates are optional; applying one is separate from automatically sharing every profile's window size or settings.
 
 ## Movement, anchors and resets
 
@@ -66,11 +84,17 @@ Hiding and showing the map retains its position. Resetting the element clears it
 | Alt-right-click | Open RuneLite’s overlay reset controls for the element. |
 | Reset positions and groups | Reset saved positions/groups after confirmation; retain visibility choices. |
 
-If you changed RuneLite’s overlay movement hotkey, use that modifier instead of Alt. Free-position overlays work with Custom UI Anchors. Ordinary inventory interaction remains protected; settings for clicks through map areas or gaps between menu stones do not turn inventory items into click-through space.
+If you changed RuneLite’s overlay movement hotkey, use that modifier instead of Alt. Free-position overlays have their own anchor points and can use the built-in Anchors tab or Custom UI Anchors. Ordinary inventory interaction remains protected; orb and minimap click protection is always active, and allowing clicks through gaps between menu tabs does not turn inventory items into click-through space.
 
-## Beta appearance features
+Free-position controls and menu groups follow their saved screen edge or center when the game canvas changes size. Explicit RuneLite origins and Custom UI Anchors keep controlling attached elements. Controls are kept within the available canvas; returning to the larger size restores their placement without saving the temporary clamped position. Changing monitors alone does not move the layout if the game canvas stays the same size. Existing absolute layouts learn their reference size when first loaded within the visible canvas, so open the update at your usual size before moving to a smaller display.
 
-**Beta features** contains circular-orb presentation, the supported shield special orb and equipment presentation controls. The current **Beta equipment panel** adds compact bonuses, weight and spellbook information to the in-game Equipment tab. It is separate from RuneLite’s toolbar side panel and does not change the expanded equipment window.
+## Beta appearance and timers
+
+**Orbs → Orb appearance** offers **Number tabs** or **Circles only**. **Orbs → Special attack** contains the optional shield special orb and extra special-attack meter. The extra meter sits below the special orb in Circles only, separated from its timer. **General → Equipment · Beta** contains the optional enhanced equipment panel and reduced tooltips; native equipment slots and the expanded equipment window remain unchanged.
+
+Under **Orbs → Hitpoints / Prayer / Special attack**, choose **Inset sweep**, **Tag meters**, **Quiet rims** or **Eight slices** independently for HP, Prayer and Special. All four styles work with Number tabs and Circles only. HP and Special show regeneration progress. Prayer's countdown empties counterclockwise toward the next point drained, follows active prayers and equipped prayer bonus, and stops when prayers are inactive.
+
+Prayer **Tag meters** and **Eight slices** can display the actual remaining prayer amount, the next-point drain countdown, or both. The blue inset and native prayer symbol stay visible. Existing circular prayer rings retain their appearance until a different style is selected. Native low-prayer flashes and existing potion-dose reminders retain their settings. Timers do not require Regeneration Meter; timing is estimated, especially when enabling mid-session or rapidly changing prayers.
 
 ## Guide, compatibility and support
 
