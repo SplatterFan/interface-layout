@@ -175,6 +175,8 @@ public class MenuStoneController
         boolean vertical = config.menuLayout() == Layout.VERTICAL_LEFT || config.menuLayout() == Layout.VERTICAL_RIGHT
             || config.menuLayout() == Layout.FREE_POSITION;
         boolean modern = !orbs.isFixedMode() && !orbs.isClassicResizable();
+        // The classic frame lays out Modern's native rows itself, so saved bar positions and groups are not applied.
+        if (modern && config.classicFrame() && config.menuLayout() == Layout.VANILLA_HORIZONTAL && !config.menuOverlayButtons()) return;
         buttons.prepare(registry, new int[]{rowBackground(0), rowBackground(1)}, modern);
         initializeFreeRows(registry);
 

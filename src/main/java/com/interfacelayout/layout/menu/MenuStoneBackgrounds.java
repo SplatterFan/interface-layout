@@ -112,6 +112,23 @@ public class MenuStoneBackgrounds
         graphic.revalidate();
     }
 
+    public void addArt(int component, int sprite, boolean tiled, Rectangle canvas)
+    {
+        Widget background = prepareRow(component, true);
+        if (background == null || background.isHidden()) return;
+        // The row may already have been prepared without room to draw outside its native bounds.
+        expander.allowChildrenAcrossCanvas(background);
+        Widget art = background.createChild(-1, WidgetType.GRAPHIC);
+        owned.get(background).add(art);
+        art.setSpriteId(sprite);
+        art.setSpriteTiling(tiled);
+        art.setNoClickThrough(true);
+        Point parent = WidgetGeometry.location(background);
+        art.setOriginalX(canvas.x - parent.x); art.setOriginalY(canvas.y - parent.y);
+        art.setOriginalWidth(canvas.width); art.setOriginalHeight(canvas.height);
+        art.revalidate();
+    }
+
     public Widget prepareRow(boolean top)
     {
         return prepareRow(top, true);

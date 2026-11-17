@@ -636,6 +636,10 @@ public interface InterfaceLayoutConfig extends Config
     String menu = "menu";
     @ConfigItem(keyName = "menuLayout", name = "Menu arrangement", description = "Alt-drag bars in any arrangement. Vertical left/right are initial positions, not locks. Use Shift-drag to detach or join stones in vertical or Free position groups.", section = menu, position = 0)
     default com.interfacelayout.layout.menu.MenuStoneController.Layout menuLayout() { return com.interfacelayout.layout.menu.MenuStoneController.Layout.VANILLA_HORIZONTAL; }
+    @ConfigItem(keyName = "classicFrame", name = "Classic frame (Modern)", description = "In Resizable Modern with Native rows, draw the Resizable Classic stone rows and side columns around the side panel. Clicking the active tab still closes the panel; the two rows then stack in the corner.", section = menu, position = 2)
+    default boolean classicFrame() { return false; }
+    @ConfigItem(keyName = "classicFrameFill", name = "Fill collapsed gaps", description = "With Classic frame (Modern) on and the side panel closed, draw the inventory background behind the two stone rows so the game world does not show through between the stones. Uses the active resource pack's background.", section = menu, position = 2)
+    default boolean classicFrameFill() { return true; }
     @ConfigItem(keyName = "menuDirection", name = "Initial bar direction", description = "Initial direction in Free position. Existing bars keep their direction. Joining two separate stones side-by-side makes a row; above or below makes a column.", section = menu, position = 1)
     default com.interfacelayout.layout.menu.MenuStoneController.Direction menuDirection() { return com.interfacelayout.layout.menu.MenuStoneController.Direction.VERTICAL; }
     @ConfigItem(keyName = "menuOverlayButtons", name = "Use overlay menu buttons", description = "Replace visible menu tabs with scalable overlay buttons using the current game/resource-pack artwork. Works in Fixed, Classic and Modern. Existing bars, hiding and grouping are retained; native interface contents are unchanged.", section = menu, position = 9)
